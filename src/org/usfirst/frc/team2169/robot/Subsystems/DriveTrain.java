@@ -5,6 +5,7 @@ import org.usfirst.frc.team2169.robot.ActuatorMap;
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain extends Subsystem {
 
@@ -37,7 +38,10 @@ public class DriveTrain extends Subsystem {
 		leftMaster.set(left);
 		rightMaster.set(right);
 		
+		pushToDashboard();
+		
 	}
+	
 	
 	public void shift(boolean up, boolean down){
 		
@@ -54,6 +58,9 @@ public class DriveTrain extends Subsystem {
 	
 	@Override
 	public void pushToDashboard() {
+		
+		SmartDashboard.putDouble("Left Master Temperature", leftMaster.getTemperature());
+		SmartDashboard.putDouble("Right Master Temperature", rightMaster.getTemperature());
 		
 	}
 

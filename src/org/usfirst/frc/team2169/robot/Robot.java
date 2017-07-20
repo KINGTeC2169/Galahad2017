@@ -57,7 +57,7 @@ public class Robot extends IterativeRobot {
 			drive.drive(controls.leftThrottle(), controls.rightThrottle());
 			intake.intakeButton(controls.intakeIn(), controls.intakeOut());
 			//drive.shift(controls.shiftUp(), controls.shiftDown());
-			flywheel.runFlywheel(controls.centerThottle(), controls.flywheelRun());
+			flywheel.runFlywheel(controls.centerThottle(), controls.runFlywheel());
 		
 		}
 		catch(Exception e){

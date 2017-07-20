@@ -11,6 +11,7 @@ import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter extends Subsystem{
 
@@ -59,12 +60,17 @@ public class Shooter extends Subsystem{
 			flywheelMaster.set(speed);
 		}
 		
+		pushToDashboard();
 		
 	}
 	
 	
 	@Override
 	public void pushToDashboard() {
+		
+		SmartDashboard.putDouble("Flywheel Master Speed", flywheelMaster.getSpeed());
+		SmartDashboard.putDouble("Flywheel Slave Speed", flywheelSlave.getSpeed());
+		
 		
 	}
 

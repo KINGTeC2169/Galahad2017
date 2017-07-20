@@ -6,17 +6,15 @@ public class ControlMap {
 	
 	Joystick primary1;
 	Joystick primary2;
-	Joystick secondary;
 	
-	int brakeBoth = 1;
-	int shiftUpBoth = 2;
-	int shiftDownBoth = 3;
+	int runFlywheel = 1;
+	int intakeIn = 2;
+	int intakeOut = 3;
 	
 	public ControlMap(){
 		
 		primary1 = new Joystick(0);
 		primary2 = new Joystick(1);
-		secondary = new Joystick(2);
 	
 	}
 	
@@ -32,8 +30,8 @@ public class ControlMap {
 		return primary1.getRawAxis(2);
 	}
 	
-	public boolean flywheelRun(){
-		if(primary1.getRawButton(brakeBoth) || primary2.getRawButton(brakeBoth)){
+	public boolean runFlywheel(){
+		if(primary1.getRawButton(runFlywheel) || primary2.getRawButton(runFlywheel)){
 			return true;
 		}
 		else{
@@ -42,7 +40,7 @@ public class ControlMap {
 	}
 	
 	public boolean intakeIn(){
-		if(primary1.getRawButton(shiftUpBoth) || primary2.getRawButton(shiftUpBoth)){
+		if(primary1.getRawButton(intakeIn) || primary2.getRawButton(intakeIn)){
 			return true;
 		}
 		else{
@@ -51,7 +49,7 @@ public class ControlMap {
 	}
 	
 	public boolean intakeOut(){
-		if(primary1.getRawButton(shiftDownBoth) || primary2.getRawButton(shiftDownBoth)){
+		if(primary1.getRawButton(intakeOut) || primary2.getRawButton(intakeOut)){
 			return true;
 		}
 		else{
