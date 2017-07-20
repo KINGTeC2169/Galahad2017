@@ -12,6 +12,11 @@ public class ActuatorMap {
 	public static final int flywheel2Port = 6;
 	
 	
+	//Solenoid Ports
+	public static final int driveShiftForwardPort = 1;
+	public static final int driveShiftReversePort = 2;
+	
+	
 	//Analog Inputs
 	public static final int flywheelEncoderInputPort = 1;
 	public static final int flywheelEncoderOutputPort = 2;

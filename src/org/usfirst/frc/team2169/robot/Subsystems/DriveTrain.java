@@ -20,6 +20,9 @@ public class DriveTrain extends Subsystem {
 		left2 = new CANTalon(ActuatorMap.driveLeft2Port);
 		right1 = new CANTalon(ActuatorMap.driveRight1Port);
 		right2 = new CANTalon(ActuatorMap.driveRight2Port);
+		
+		//Commented out until pneumatics are put on the robot.
+		//shifter = new DoubleSolenoid(ActuatorMap.driveShiftForwardPort, ActuatorMap.driveShiftReversePort);
 	
 	}
 	
