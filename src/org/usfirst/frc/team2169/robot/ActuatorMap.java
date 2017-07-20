@@ -4,12 +4,15 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class ActuatorMap {
 
-	public static final int driveLeft1Port = 1;
-	public static final int driveLeft2Port = 2;
-	public static final int driveRight1Port = 3;
-	public static final int driveRight2Port = 4;
-	public static final int flywheel1Port = 5;
-	public static final int flywheel2Port = 6;
+	public static final int driveLeftMasterPort = 4;
+	public static final int driveLeftSlavePort = 5;
+	public static final int driveRightMasterPort = 6;
+	public static final int driveRightSlavePort = 7;
+	public static final int flywheelMasterPort = 1;
+	public static final int flywheelSlavePort = 2;
+	public static final int intakeMasterPort = 9;
+	public static final int intakeSlavePort = 10;
+	
 	
 	
 	//Solenoid Ports

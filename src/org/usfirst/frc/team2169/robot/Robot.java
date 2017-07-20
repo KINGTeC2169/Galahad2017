@@ -1,8 +1,10 @@
 package org.usfirst.frc.team2169.robot;
 
 import org.usfirst.frc.team2169.robot.Subsystems.DriveTrain;
+import org.usfirst.frc.team2169.robot.Subsystems.Intake;
 import org.usfirst.frc.team2169.robot.Subsystems.Shooter;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -19,13 +21,22 @@ public class Robot extends IterativeRobot {
 	DriveTrain drive;
 	ControlMap controls;
 	Shooter flywheel;
+	Intake intake;
 	
 	@Override
 	public void robotInit() {
-		
-		drive = new DriveTrain();
-		controls = new ControlMap();
-		flywheel = new Shooter();
+		try{
+			
+			drive = new DriveTrain();
+			controls = new ControlMap();
+			flywheel = new Shooter();
+			intake = new Intake();
+			
+		}
+		catch(Exception e){
+			DriverStation.reportError(e.toString(), true);
+		}
+	
 	}
 
 	@Override
@@ -41,9 +52,19 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 	
-		drive.drive(controls.leftThrottle(), controls.rightThrottle());
-		//drive.shift(controls.shiftUp(), controls.shiftDown());
-		flywheel.setSpeed(controls.centerThottle());
+		try{
+			
+			drive.drive(controls.leftThrottle(), controls.rightThrottle());
+			intake.intakeButton(controls.intakeIn(), controls.intakeOut());
+			//drive.shift(controls.shiftUp(), controls.shiftDown());
+			flywheel.runFlywheel(controls.centerThottle(), controls.flywheelRun());
+		
+		}
+		catch(Exception e){
+			DriverStation.reportError(e.toString(), true);
+		}
+		
+		
 		
 	}
 

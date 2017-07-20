@@ -22,20 +22,20 @@ public class Shooter extends Subsystem{
 	public Shooter(){
 		
 		//Defining Flywheels
-		flywheelMaster = new CANTalon(ActuatorMap.flywheel1Port);
-		flywheelSlave = new CANTalon(ActuatorMap.flywheel2Port);
+		flywheelMaster = new CANTalon(ActuatorMap.flywheelMasterPort);
+		flywheelSlave = new CANTalon(ActuatorMap.flywheelSlavePort);
 		
 		//Setting Master/Slave
         flywheelMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
         flywheelSlave.changeControlMode(CANTalon.TalonControlMode.Follower);
-		flywheelSlave.set(ActuatorMap.flywheel1Port);
+		flywheelSlave.set(ActuatorMap.flywheelMasterPort);
 		
 		//Setting up encoder
-        flywheelMaster.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
+        //flywheelMaster.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
         
         //PID Values currently based on recommended dual 775 values from team 254.  
         //Remeber to test with the old 550s or upgrade motors.
-        flywheelMaster.setPID(Constants.fwP, Constants.fwI, Constants.fwD, Constants.fwF, Constants.fwIZone, Constants.fwRampRate, 0);
+        //flywheelMaster.setPID(Constants.fwP, Constants.fwI, Constants.fwD, Constants.fwF, Constants.fwIZone, Constants.fwRampRate, 0);
         
         //Setting Speed Mode
         flywheelMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
@@ -52,10 +52,13 @@ public class Shooter extends Subsystem{
 		
 	}
 	
-	public void setSpeed(double speed){
+	public void runFlywheel(double speed, boolean running){
 		
 		//Well that was easy ;)
-		flywheelMaster.set(speed);
+		if(running){
+			flywheelMaster.set(speed);
+		}
+		
 		
 	}
 	

@@ -8,18 +8,24 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class DriveTrain extends Subsystem {
 
-	CANTalon left1;
-	CANTalon left2;
-	CANTalon right1;
-	CANTalon right2;
+	CANTalon leftMaster;
+	CANTalon leftSlave;
+	CANTalon rightMaster;
+	CANTalon rightSlave;
 	DoubleSolenoid shifter;
 	
 	public DriveTrain() {
 		
-		left1 = new CANTalon(ActuatorMap.driveLeft1Port);
-		left2 = new CANTalon(ActuatorMap.driveLeft2Port);
-		right1 = new CANTalon(ActuatorMap.driveRight1Port);
-		right2 = new CANTalon(ActuatorMap.driveRight2Port);
+		leftMaster = new CANTalon(ActuatorMap.driveLeftMasterPort);
+		leftSlave = new CANTalon(ActuatorMap.driveLeftSlavePort);
+		rightMaster = new CANTalon(ActuatorMap.driveRightMasterPort);
+		rightSlave = new CANTalon(ActuatorMap.driveRightSlavePort);
+		
+		leftSlave.changeControlMode(CANTalon.TalonControlMode.Follower);
+		leftSlave.set(ActuatorMap.driveLeftMasterPort);
+		
+		rightSlave.changeControlMode(CANTalon.TalonControlMode.Follower);
+		rightSlave.set(ActuatorMap.driveRightMasterPort);
 		
 		//Commented out until pneumatics are put on the robot.
 		//shifter = new DoubleSolenoid(ActuatorMap.driveShiftForwardPort, ActuatorMap.driveShiftReversePort);
@@ -28,10 +34,8 @@ public class DriveTrain extends Subsystem {
 	
 	public void drive(double left, double right){
 		
-		left1.set(left);
-		left2.set(left);
-		right1.set(right);
-		right2.set(right);
+		leftMaster.set(left);
+		rightMaster.set(right);
 		
 	}
 	
@@ -61,10 +65,10 @@ public class DriveTrain extends Subsystem {
 	@Override
 	public void stop() {
 
-		left1.set(0);
-		left2.set(0);
-		right1.set(0);
-		right2.set(0);
+		leftMaster.set(0);
+		leftSlave.set(0);
+		rightMaster.set(0);
+		rightSlave.set(0);
 		
 	}
 

@@ -32,7 +32,16 @@ public class ControlMap {
 		return primary1.getRawAxis(2);
 	}
 	
-	public boolean shiftUp(){
+	public boolean flywheelRun(){
+		if(primary1.getRawButton(brakeBoth) || primary2.getRawButton(brakeBoth)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public boolean intakeIn(){
 		if(primary1.getRawButton(shiftUpBoth) || primary2.getRawButton(shiftUpBoth)){
 			return true;
 		}
@@ -41,7 +50,7 @@ public class ControlMap {
 		}
 	}
 	
-	public boolean shiftDown(){
+	public boolean intakeOut(){
 		if(primary1.getRawButton(shiftDownBoth) || primary2.getRawButton(shiftDownBoth)){
 			return true;
 		}
