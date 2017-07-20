@@ -2,6 +2,9 @@ package org.usfirst.frc.team2169.robot.Subsystems;
 
 import org.usfirst.frc.team2169.robot.ActuatorMap;
 import org.usfirst.frc.team2169.robot.Constants;
+import org.usfirst.frc.team2169.robot.Subsystems.Subsystem;
+import com.ctre.CANTalon;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import org.usfirst.frc.team2169.robot.Util.PIDObject;
 
 import com.ctre.CANTalon;
