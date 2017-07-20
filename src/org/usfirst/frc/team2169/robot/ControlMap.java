@@ -21,11 +21,15 @@ public class ControlMap {
 	}
 	
 	public double leftThrottle(){
-		return primary1.getRawAxis(0);
+		return primary1.getRawAxis(1);
 	}
 	
 	public double rightThrottle(){
-		return primary2.getRawAxis(0);
+		return primary2.getRawAxis(1);
+	}
+	
+	public double centerThottle(){
+		return primary1.getRawAxis(2);
 	}
 	
 	public boolean shiftUp(){

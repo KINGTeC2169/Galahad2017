@@ -38,7 +38,7 @@ public class Shooter extends Subsystem{
         flywheelMaster.setPID(Constants.fwP, Constants.fwI, Constants.fwD, Constants.fwF, Constants.fwIZone, Constants.fwRampRate, 0);
         
         //Setting Speed Mode
-        flywheelMaster.changeControlMode(CANTalon.TalonControlMode.Speed);
+        flywheelMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
         
 
 	
@@ -52,10 +52,10 @@ public class Shooter extends Subsystem{
 		
 	}
 	
-	public void setSpeed(double goalRPM){
+	public void setSpeed(double speed){
 		
 		//Well that was easy ;)
-		flywheelMaster.set(goalRPM);
+		flywheelMaster.set(speed);
 		
 	}
 	

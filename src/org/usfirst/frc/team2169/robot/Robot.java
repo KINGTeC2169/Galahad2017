@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2169.robot;
 
 import org.usfirst.frc.team2169.robot.Subsystems.DriveTrain;
+import org.usfirst.frc.team2169.robot.Subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -17,13 +18,14 @@ public class Robot extends IterativeRobot {
 	
 	DriveTrain drive;
 	ControlMap controls;
+	Shooter flywheel;
 	
 	@Override
 	public void robotInit() {
 		
 		drive = new DriveTrain();
 		controls = new ControlMap();
-		
+		flywheel = new Shooter();
 	}
 
 	@Override
@@ -40,7 +42,8 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 	
 		drive.drive(controls.leftThrottle(), controls.rightThrottle());
-		drive.shift(controls.shiftUp(), controls.shiftDown());
+		//drive.shift(controls.shiftUp(), controls.shiftDown());
+		flywheel.setSpeed(controls.centerThottle());
 		
 	}
 
