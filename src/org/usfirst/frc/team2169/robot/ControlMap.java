@@ -1,15 +1,13 @@
 package org.usfirst.frc.team2169.robot;
 
+import org.usfirst.frc.team2169.robot.sticks.BothSticks;
+
 import edu.wpi.first.wpilibj.Joystick;
 
 public class ControlMap {
 	
 	Joystick primary1;
 	Joystick primary2;
-	
-	int runFlywheel = 1;
-	int intakeIn = 2;
-	int intakeOut = 3;
 	
 	public ControlMap(){
 		
@@ -31,7 +29,8 @@ public class ControlMap {
 	}
 	
 	public boolean runFlywheel(){
-		if(primary1.getRawButton(runFlywheel) || primary2.getRawButton(runFlywheel)){
+		//If either of the triggers are pressed, return true.
+		if(primary1.getRawButton(BothSticks.runFlywheel) || primary2.getRawButton(BothSticks.runFlywheel)){
 			return true;
 		}
 		else{
@@ -40,7 +39,7 @@ public class ControlMap {
 	}
 	
 	public boolean intakeIn(){
-		if(primary1.getRawButton(intakeIn) || primary2.getRawButton(intakeIn)){
+		if(primary1.getRawButton(BothSticks.intakeIn) || primary2.getRawButton(BothSticks.intakeIn)){
 			return true;
 		}
 		else{
@@ -49,7 +48,7 @@ public class ControlMap {
 	}
 	
 	public boolean intakeOut(){
-		if(primary1.getRawButton(intakeOut) || primary2.getRawButton(intakeOut)){
+		if(primary1.getRawButton(BothSticks.intakeOut) || primary2.getRawButton(BothSticks.intakeOut)){
 			return true;
 		}
 		else{
