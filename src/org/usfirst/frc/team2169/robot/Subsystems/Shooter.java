@@ -20,6 +20,8 @@ public class Shooter extends Subsystem{
 	CANTalon flywheelSlave;
 	double talonSpeed;
 	
+	Encoder flywheelEnc;
+	
 	public Shooter(){
 		
 		//Defining Flywheels
@@ -30,6 +32,8 @@ public class Shooter extends Subsystem{
         flywheelMaster.changeControlMode(CANTalon.TalonControlMode.PercentVbus);
         flywheelSlave.changeControlMode(CANTalon.TalonControlMode.Follower);
 		flywheelSlave.set(ActuatorMap.flywheelMasterPort);
+		
+		flywheelEnc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 		
 		//Setting up encoder
         //flywheelMaster.setFeedbackDevice(CANTalon.FeedbackDevice.CtreMagEncoder_Relative);
@@ -59,18 +63,16 @@ public class Shooter extends Subsystem{
 		if(running){
 			flywheelMaster.set(speed);
 		}
+		else{
+			flywheelMaster.set(0);
+		}
 		
-		pushToDashboard();
-		
+		SmartDashboard.putDouble("Flywheel Rate", flywheelEnc.getRate());
 	}
 	
 	
 	@Override
 	public void pushToDashboard() {
-		
-		SmartDashboard.putDouble("Flywheel Master Speed", flywheelMaster.getSpeed());
-		SmartDashboard.putDouble("Flywheel Slave Speed", flywheelSlave.getSpeed());
-		
 		
 	}
 

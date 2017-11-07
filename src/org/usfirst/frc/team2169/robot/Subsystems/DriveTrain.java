@@ -5,6 +5,7 @@ import org.usfirst.frc.team2169.robot.ActuatorMap;
 import com.ctre.CANTalon;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveTrain extends Subsystem {
@@ -28,28 +29,24 @@ public class DriveTrain extends Subsystem {
 		rightSlave.changeControlMode(CANTalon.TalonControlMode.Follower);
 		rightSlave.set(ActuatorMap.driveRightMasterPort);
 		
-		//Commented out until pneumatics are put on the robot.
-		//shifter = new DoubleSolenoid(ActuatorMap.driveShiftForwardPort, ActuatorMap.driveShiftReversePort);
+		shifter = new DoubleSolenoid(10, ActuatorMap.driveShiftForwardPort, ActuatorMap.driveShiftReversePort);
 	
 	}
 	
 	public void drive(double left, double right){
 		
 		leftMaster.set(left);
-		rightMaster.set(right);
-		
-		pushToDashboard();
+		rightMaster.set(-right);
 		
 	}
 	
-	
 	public void shift(boolean up, boolean down){
 		
-		if(up && shifter.get() == ActuatorMap.lowGear){
+		if(up){
 			shifter.set(ActuatorMap.highGear);
 		}
 		
-		else if(down && shifter.get() == ActuatorMap.highGear){
+		else if(down){
 			shifter.set(ActuatorMap.lowGear);
 		}
 		
@@ -58,9 +55,6 @@ public class DriveTrain extends Subsystem {
 	
 	@Override
 	public void pushToDashboard() {
-		
-		SmartDashboard.putDouble("Left Master Temperature", leftMaster.getTemperature());
-		SmartDashboard.putDouble("Right Master Temperature", rightMaster.getTemperature());
 		
 	}
 

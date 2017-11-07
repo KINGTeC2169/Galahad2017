@@ -25,13 +25,13 @@ public class Intake {
 		
 	}
 	
-	public void intakeButton(boolean in, boolean out){
+	public void intakeButton(boolean in, boolean out, double speed){
 		if(in){
-			intakeMaster.set(1);
+			intakeMaster.set(speed);
 		}
 		
 		else if(out){
-			intakeMaster.set(1);
+			intakeMaster.set(-speed);
 		}
 		
 		else{
